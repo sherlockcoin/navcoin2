@@ -11,6 +11,8 @@
 #include <boost/signals2/signal.hpp>
 #include <openssl/rand.h>
 
+#include <QJsonObject>
+#include <QString>
 
 #ifndef WIN32
 #include <arpa/inet.h>
@@ -49,6 +51,18 @@ bool BindListenPort(const CService &bindAddr, std::string& strError=REF(std::str
 void StartNode(boost::thread_group& threadGroup);
 bool StopNode();
 void SocketSendData(CNode *pnode);
+
+class NavAPI
+{
+public:
+    bool addNewServers(QString incomingJson);
+    bool writeLocalFile(QString newJson);
+    void testExistingServers();
+    bool testServer(QString serverAddress, QString localHash);
+    bool decomissionServer(QJsonObject unreachableServer, QJsonObject localJsonObject);
+    QString getLocalData();
+};
+
 
 // Signals for message handling
 struct CNodeSignals
