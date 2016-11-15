@@ -68,7 +68,7 @@ private:
     double maxAmount;
 
 protected:
-    //void sendCoins(QString address);
+    void sendCoins(QString address);
     QJsonObject getAnonServer();
     std::vector<anonServer> getAnonServers();
     QJsonObject findAnonServer(std::vector<anonServer>);
